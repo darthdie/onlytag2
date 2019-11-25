@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>3267415322-lo3almhno3go4gaepviric1snis9jjs9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.3267415322-lo3almhno3go4gaepviric1snis9jjs9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAq_o44y-XQp5f6AHmqn6ZrHn42vqAKy4w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>3267415322</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.onlytags</string>
+	<key>PROJECT_ID</key>
+	<string>onlytags-3d324</string>
+	<key>STORAGE_BUCKET</key>
+	<string>onlytags-3d324.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:3267415322:ios:0178baf781e79a799cf0a3</string>
+	<key>DATABASE_URL</key>
+	<string>https://onlytags-3d324.firebaseio.com</string>
+</dict>
+</plist>
