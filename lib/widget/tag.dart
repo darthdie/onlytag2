@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:onlytag2/models/tag_model.dart';
 
 class Tag extends StatefulWidget {
-  final String tag;
   List list;
   Function(List) callback;
-  int id;
+  final TagModel tag;
 
   Tag(
       {Key key,
         @required this.tag,
-        this.list, this.callback, this.id
+        this.list, this.callback
       })
       : super(key: key);
 
@@ -55,7 +55,7 @@ class _TagState extends State<Tag> with SingleTickerProviderStateMixin {
                 padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  widget.tag,
+                  widget.tag.title,
                   style: TextStyle(
                       fontSize: 20,
                       color: isSelected ? Colors.black : Colors.white,
@@ -80,15 +80,7 @@ class _TagState extends State<Tag> with SingleTickerProviderStateMixin {
       isSelected
           ? _animationController.forward()
           : _animationController.reverse();
-      isSelected ? widget.list.add(
-          Container(
-            padding: EdgeInsets.all(10),
-            height: 45,
-            child: Text(widget.tag, style: TextStyle(color: Color(0xffff9900), fontSize: 20, fontFamily: 'Dokyo'),),
-              decoration: BoxDecoration(
-            border: Border.all(color: Color(0xffff9900),),
-            borderRadius: BorderRadius.circular(10))
-          )): widget.list.removeAt(widget.id);
+      isSelected ? widget.list.add(widget.tag): widget.list.removeWhere((t) => t.id == widget.tag.id);
     });
   }
 }

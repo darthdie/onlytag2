@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:onlytag2/widget/tag.dart';
+import 'package:onlytag2/models/tag_model.dart';
 
 class TagPage extends StatefulWidget {
   DocumentSnapshot snapshot;
@@ -17,10 +18,10 @@ class TagPage extends StatefulWidget {
 }
 
 class _TagPageState extends State<TagPage> {
-  List hashList = new List();
+  var hashList = List<TagModel>();
   StreamSubscription<QuerySnapshot> subscription;
 
-  List<DocumentSnapshot> snapshot;
+  List<TagModel> snapshot;
 
   Query collectionReference;
 
@@ -33,7 +34,10 @@ class _TagPageState extends State<TagPage> {
         .collection('tags').orderBy("title");
     subscription = collectionReference.snapshots().listen((datasnapshot) {
       setState(() {
-        snapshot = datasnapshot.documents;
+        snapshot = datasnapshot.documents.map((d) => TabModel(
+          title: d['title'],
+          id: d.documentID
+        )).toList();
       });
     });
     super.initState();
@@ -96,7 +100,14 @@ class _TagPageState extends State<TagPage> {
                 width: MediaQuery.of(context).size.width*0.8,
                 child: Wrap(
                   children: <Widget>[
-                    for (var item in hashList) Container(child: item),
+                    for (var item in hashList) Container(
+                      padding: EdgeInsets.all(10),
+                      height: 45,
+                      child: Text(item.title, style: TextStyle(color: Color(0xffff9900), fontSize: 20, fontFamily: 'Dokyo'),),
+                        decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xffff9900),),
+                      borderRadius: BorderRadius.circular(10))
+                    ),
                   ],
                 )
           )),
@@ -109,9 +120,8 @@ class _TagPageState extends State<TagPage> {
                 itemBuilder: (context, index) {
                   return Tag(
                     callback: (list) => setState(() => hashList = list),
-                    tag: snapshot[index].data["title"],
                     list: hashList,
-                    id: index,
+                    tag: snapshot[index],
                   );
                 },
               )
